@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packet Sniff Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-r from-blue-400 to-cyan-500">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold text-center mb-6">Sniffed Packets</h1>
+            <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">Packet Detail</th>
+                            <th scope="col" class="py-3 px-6">Source</th>
+                            <th scope="col" class="py-3 px-6">Destination</th>
+                            <th scope="col" class="py-3 px-6">Protocol</th>
+                            <th scope="col" class="py-3 px-6">Length</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for packet in packets %}
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="py-4 px-6">{{ packet.summary() }}</td>
+                                <td class="py-4 px-6">{{ packet[IP].src }}</td>
+                                <td class="py-4 px-6">{{ packet[IP].dst }}</td>
+                                <td class="py-4 px-6">{{ packet.lastlayer().name }}</td>
+                                <td class="py-4 px-6">{{ packet.len }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-6 text-center">
+                <a href="{{ url_for('network.download_file', filename=filename) }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Download PCAP File
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

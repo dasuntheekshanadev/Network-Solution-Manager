@@ -1,0 +1,40 @@
+<!-- templates/home.html -->
+
+{% extends "base.html" %}
+
+{% block title %}Home - NetMans{% endblock %}
+
+{% block header %}
+    <h1 class="text-3xl font-bold leading-tight text-black">Welcome to NetMans</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-3 gap-4">
+            <!-- Card with blue color scheme -->
+            <div class="bg-blue-100 rounded-lg shadow-lg p-6 my-4">
+                <h2 class="text-xl font-semibold mb-2" style="color: #3182ce;">Network Scanner</h2>
+                <p class="text-gray-800">Click the button below to start the network scan:</p>
+                <a href="/start_scan" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block">Start Network Scan</a>
+            </div>
+            <!-- Card with green color scheme -->
+            <div class="bg-green-100 rounded-lg shadow-lg p-6 my-4">
+                <h2 class="text-xl font-semibold mb-2" style="color: #38a169;">Packet Sniffer</h2>
+                <p class="text-gray-800">Click the button below to start the packet sniffer:</p>
+                <a href="/start_sniffing" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block">Start Packet Sniffing</a>
+            </div>
+            <!-- Card with red color scheme -->
+            <div class="bg-red-100 rounded-lg shadow-lg p-6 my-4">
+                <h2 class="text-xl font-semibold mb-2" style="color: #e53e3e;">Network Bandwidth</h2>
+                <p class="text-gray-800">View real-time network health status:</p>
+                <a href="/network_bandwidth" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block">View Network Bandwidth</a>
+            </div>
+            <!-- New card for SSH command execution -->
+            <div class="bg-yellow-100 rounded-lg shadow-lg p-6 my-4">
+                <h2 class="text-xl font-semibold mb-2" style="color: #ecc94b;">SSH Command Execution</h2>
+                <p class="text-gray-800">Execute SSH commands on remote servers:</p>
+                <a href="/execute_ssh_command" class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded mt-2 inline-block">Execute SSH Command</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

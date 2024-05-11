@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Bandwidth</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4">
+        <div class="container mx-auto flex items-center justify-between px-4">
+            <a href="/" class="text-white text-xl font-bold">NetMans</a>
+            <ul class="flex space-x-4">
+                <li><a href="/start_scan" class="text-white hover:text-gray-300">Start Scan</a></li>
+                <li><a href="/start_sniffing" class="text-white hover:text-gray-300">Start Sniffing</a></li>
+                <li><a href="/network_bandwidth" class="text-white hover:text-gray-300">Bandwidth</a></li>
+                <!-- Add more navigation links if needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-6 text-center text-red-500">Network Bandwidth Monitoring</h1>
+        <div class="mt-4">
+            <p class="font-bold text-red-600">Network Interface Stats:</p>
+            <ul class="list-disc list-inside">
+                {% for interface, stats in network_stats.items() %}
+                    <li class="text-red-800">
+                        <strong>{{ interface }}</strong>:
+                        <ul class="list-disc list-inside">
+                            <li>Bytes Sent: {{ stats.bytes_sent }}</li>
+                            <li>Bytes Received: {{ stats.bytes_recv }}</li>
+                            <li>Packets Sent: {{ stats.packets_sent }}</li>
+                            <li>Packets Received: {{ stats.packets_recv }}</li>
+                            <li>Errors In: {{ stats.errin }}</li>
+                            <li>Errors Out: {{ stats.errout }}</li>
+                            <!-- Add more advanced details if needed -->
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

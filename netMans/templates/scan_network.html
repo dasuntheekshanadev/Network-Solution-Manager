@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Scan Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8 text-center">Network Scan Results</h1>
+        <div class="overflow-x-auto">
+            <table class="table-auto w-full bg-white shadow-md rounded-lg">
+                <thead>
+                    <tr class="bg-indigo-500 text-white">
+                        <th class="px-4 py-2">IP Address</th>
+                        <th class="px-4 py-2">MAC Address</th>
+                        <th class="px-4 py-2">Status</th>
+                        <th class="px-4 py-2">Operating System</th>
+                        <th class="px-4 py-2">Device Type</th>
+                        <th class="px-4 py-2">Services</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for device in devices %}
+                        <tr class="hover:bg-gray-100">
+                            <td class="border px-4 py-2">{{ device.ip }}</td>
+                            <td class="border px-4 py-2">{{ device.mac }}</td>
+                            <td class="border px-4 py-2">{{ device.status }}</td>
+                            <td class="border px-4 py-2">{{ device.os }}</td>
+                            <td class="border px-4 py-2">{{ device.type }}</td>
+                            <td class="border px-4 py-2">{{ device.services }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
